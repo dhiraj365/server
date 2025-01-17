@@ -14,13 +14,17 @@ const razorpay = new Razorpay({
 
 app.post('/createOrder', async (req, res) => {
   const { amount, currency, receipt } = req.body;
+  console.log('Received request:', req.body);
   try {
     const order = await razorpay.orders.create({ amount, currency, receipt });
+    console.log('Order created:', order);
     res.json({ orderId: order.id });
   } catch (error) {
+    console.error('Error creating order:', error);
     res.status(500).json({ error: error.message });
   }
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
