@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const razorpay = new Razorpay({
-  key_id: 'rzp_live_8Ft56TrnMR2sAa',
-  key_secret: 'g8YJla8t9gupFMrQaUkRWVB0',
+  key_id: 'rzp_live_8Ft56TrnMR2sAa', // Replace with your actual Razorpay Key ID
+  key_secret: 'g8YJla8t9gupFMrQaUkRWVB0', // Replace with your actual Razorpay Key Secret
 });
 
 app.post('/createOrder', async (req, res) => {
@@ -24,7 +24,6 @@ app.post('/createOrder', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
